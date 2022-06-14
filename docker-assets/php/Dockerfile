@@ -1,4 +1,9 @@
 FROM php:8.1.0-fpm-alpine
+
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
+
 RUN apk add --no-cache \
         zip \
         libzip-dev \
@@ -13,8 +18,8 @@ RUN apk add --no-cache \
         openssl \
         openssl-dev 
 RUN docker-php-ext-install \
-        pdo_mysql \
-        mysqli \
+        pdo_pgsql \
+        pgsql \
         gd \
         intl \
         xml \
