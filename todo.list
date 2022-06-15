@@ -1,10 +1,10 @@
 X1. Add functional for remove\edit your own comments if you are logged in.
 X2. Add functional for add\edit\remove your own posts if you are logged in.
- 3. (Optional) Add functional for sorting posts by comments count\likes count.
- 4. Add functional for liking posts.
- 5. Add everyday job for clearing likes (also add crontab to docker container).
- 6. Add API versions of routes.
- 7. Create PostMan library.
- 8. Check code for PSR.
+X3. (Optional) Add functional for sorting posts by comments count\likes count.
+X4. Add functional for liking posts.
+X5. Add everyday job for clearing likes (also add crontab to docker container).
+X6. Add API versions of routes.
+X7. Create PostMan library.
+X8. Check code for PSR.
  9. Deploy project to external server\domain.
- 10. Make startup script && add readme file.
+X10. Make startup script && add readme file.
