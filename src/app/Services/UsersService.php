@@ -6,41 +6,44 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UsersService {
+class UsersService
+{
+    public static function loginUser($credentials)
+    {
+        $user = User::where('name', $credentials['nickname'])
+                    ->first();
 
-	public static function loginUser($credentials) {
-		$user = User::where('name', $credentials['nickname'])
-					->first();
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            Auth::login($user);
 
-		if ($user && Hash::check($credentials['password'], $user->password)) {
-			Auth::login($user);
+            return Auth::user();
+        }
 
-			return Auth::user();
-		}
+        return false;
+    }
 
-		return false; 
-	}
+    public static function registerUser($credentials)
+    {
+        $user = User::where('name', $credentials['nickname'])->first();
 
-	public static function registerUser($credentials) {
-		$user = User::where('name', $credentials['nickname'])->first();
+        if ($user) {
+            return false;
+        }
 
-		if ($user) {
-			return false;
-		} 
+        $user = User::create([
+            'name' => $credentials['nickname'],
+            'password' => $credentials['password']
+        ]);
 
-		$user = User::create([
-			'name' => $credentials['nickname'],
-			'password' => $credentials['password']
-		]);
-		
-		Auth::login($user);
+        Auth::login($user);
 
-		return Auth::user();
-	}
+        return Auth::user();
+    }
 
-	public static function logoutUser() {
-		Auth::logout();
+    public static function logoutUser()
+    {
+        Auth::logout();
 
-		return ['state' => true]; 
-	}	
+        return ['state' => true];
+    }
 }
