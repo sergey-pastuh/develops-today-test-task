@@ -1,17 +1,14 @@
 ﻿#!/bin/bash
+
+cd src && composer install
+
 docker exec -it test_task_php-fpm php artisan migrate
 
 docker exec -it test_task_php-fpm php artisan db:seed
 
 docker exec -it test_task_php-fpm php artisan cache:clear
 
-chmod -R 777 src/storage
-
-echo [92m..Starting containers..[0m
-
-docker-compose up -d
-
-clear
+chmod -R 777 storage
 
 echo '----------------------------------------------'
 echo '--      [92mDOCKER UP AND RUNNING[0m               --'
