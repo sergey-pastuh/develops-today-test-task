@@ -8,10 +8,24 @@ use Illuminate\Support\Facades\Redis;
 
 class PostsService {
 
-	public static function getPostsForHome() {
-		return Post::withCount('comments')
-					->orderBy('created_at', 'DESC')
-					->orderBy('title')
+	public static function getPostsForHome($request) {
+		$posts = Post::withCount('comments');
+		$sorting = $request->sortedBy ?? false;
+
+		switch ($sorting) {
+			case 'comments':
+				$posts->orderBy('comments_count', 'DESC');
+				break;
+
+			case 'likes':
+				$posts->orderBy('amount_of_upvotes', 'DESC');
+				break;
+			
+			default:
+				$posts->orderBy('created_at', 'DESC');
+				break;
+		}
+		return $posts->orderBy('title')
 					->paginate(25);
 	}
 

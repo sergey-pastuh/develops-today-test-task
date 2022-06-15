@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     public function home(Request $request) {
         //getting paginated posts for home page
-        return view('posts.home', ['posts' => PostsService::getPostsForHome()]);
+        return view('posts.home', ['posts' => PostsService::getPostsForHome($request)]);
     }
 
     public function newPostPage(AddPostPageRequest $request) {
