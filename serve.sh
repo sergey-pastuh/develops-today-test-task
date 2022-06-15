@@ -2,6 +2,8 @@
 
 cd src && composer install
 
+cp .env_ .env
+
 docker exec -it test_task_php-fpm php artisan migrate
 
 docker exec -it test_task_php-fpm php artisan db:seed

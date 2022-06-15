@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new ClearUpvotes)->everyMinute();
+        $schedule->job(new ClearUpvotes)->dailyAt('00:01');
     }
 
     /**
