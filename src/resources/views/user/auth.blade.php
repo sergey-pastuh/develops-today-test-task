@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="/users/auth/login" method="POST">
+<form action="{{route('auth.login')}}" method="POST">
 	@csrf
 	<h1>Login</h1>
 	<div class="auth-form">
@@ -21,7 +21,7 @@
 	</div>
 </form>
 <hr>
-<form action="/users/auth/register" method="POST">
+<form action="{{route('auth.register')}}" method="POST">
 	@csrf
 	<div class="auth-form">
 		<h1>Register</h1>

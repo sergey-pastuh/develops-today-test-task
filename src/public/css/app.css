@@ -29,7 +29,7 @@
 	padding-bottom: 7px;
 }
 
-.block-number, .block-pointer, .block-title {
+.block-number, .block-pointer, .block-title, .upvotes {
 	display: inline-block;
 }
 
@@ -46,8 +46,20 @@
     text-decoration: inherit;
 }
 
-.block-info {
+.block-info, .block-info button{
 	font: italic small-caps bold 14px/2 cursive;
+}
+
+.block-info form, .auth-box form {
+	display: inline-block;
+}
+
+.link-button {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	font: bold;
+	cursor: pointer;
 }
 
 .comment-textarea {
@@ -73,7 +85,7 @@
 	position: fixed;
 }
 
-.auth-box {
+.auth-box, .main-menu {
 	display: inline-block;
 	padding: 2px;
 }
@@ -82,6 +94,6 @@
 	margin-bottom: 30px;
 }
 
-.auth-form * {
+.auth-form *, .post-form * {
 	display: block;
 }

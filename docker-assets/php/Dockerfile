@@ -16,7 +16,8 @@ RUN apk add --no-cache \
         libxml2-dev \
         git \
         openssl \
-        openssl-dev 
+        openssl-dev \
+	supervisor
 RUN docker-php-ext-install \
         pdo_pgsql \
         pgsql \

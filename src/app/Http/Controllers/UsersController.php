@@ -11,10 +11,12 @@ use App\Services\UsersService;
 class UsersController extends Controller
 {
     public function authPage() {
+        //displaying auth page
         return view('user.auth');
     }
 
     public function login(LoginRequest $request) {
+        //logging user in system
         $credentials = [
             'nickname' => $request->login_nickname, 
             'password' => $request->login_password
@@ -28,6 +30,7 @@ class UsersController extends Controller
     }
 
     public function register(RegisterRequest $request) {
+        //registering new user
         $credentials = [
             'nickname' => $request->register_nickname, 
             'password' => $request->register_password,
@@ -41,6 +44,7 @@ class UsersController extends Controller
     }
 
     public function logout() {
+        //logging user out of system
         UsersService::logoutUser();
         
         return redirect("/");

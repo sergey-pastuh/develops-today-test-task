@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -21,6 +22,7 @@ class PostFactory extends Factory
             'link' => $this->faker->url(),
             'amount_of_upvotes' => $this->faker->numberBetween(0, 100),
             'author_name' => $this->faker->name(),
+            'created_at' => Carbon::now()->addSeconds(random_int(1, 100)),
         ];
     }
 }

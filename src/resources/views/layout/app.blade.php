@@ -21,21 +21,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="main-title">
-                <a href="/">
-                    <div class="header-first-letter">Y</div>et Another Generic News Board
-                </a>
-            </div>
-            <div class="auth-box">
-                @guest
-                    <a href="/users/auth/">Login/Register</a>
-                @endguest
-                @auth
-                    {{auth()->user()->name}} | <a href="/users/auth/logout">Logout</a>
-                @endauth
-            </div>
-        </div>
+        @include('layout.header')
         <div class="content">
             @yield('content')
         </div>

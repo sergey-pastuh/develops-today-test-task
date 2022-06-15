@@ -2166,6 +2166,21 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('.upvote-button').click(function () {
+  $(this).css("visibility", "hidden");
+  var post_id = $(this).attr('id');
+  $.ajax({
+    url: '/posts/' + post_id + '/upvote',
+    data: {
+      "post_id": post_id
+    },
+    type: 'post',
+    success: function success(result) {
+      var value = $('#upvotes-' + post_id).text();
+      $('#upvotes-' + post_id).text(++value);
+    }
+  });
+});
 
 /***/ }),
 

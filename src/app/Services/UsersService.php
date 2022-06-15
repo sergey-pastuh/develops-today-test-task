@@ -15,7 +15,7 @@ class UsersService {
 		if ($user && Hash::check($credentials['password'], $user->password)) {
 			Auth::login($user);
 
-			return true;
+			return Auth::user();
 		}
 
 		return false; 
@@ -35,12 +35,12 @@ class UsersService {
 		
 		Auth::login($user);
 
-		return true;
+		return Auth::user();
 	}
 
 	public static function logoutUser() {
 		Auth::logout();
 
-		return true; 
+		return ['state' => true]; 
 	}	
 }

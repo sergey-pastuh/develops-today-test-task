@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class AddCommentRequest extends FormRequest
+class AddPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class AddCommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,9 +25,8 @@ class AddCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string|max:250',
-            'post_id' => 'exists:App\Models\Post,id',
-            'author_name' => 'string|sometimes',
+            'title' => 'required|string|max:250',
+            'link' => 'required|string|max:250',
         ];
     }
 }
